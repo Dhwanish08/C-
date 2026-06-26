@@ -109,7 +109,6 @@ void printnum(){
     mynum = 1; //local>>global
     std::cout<< ::mynum; //:: to use global version
 }
-*/
 
 //Bandking App
 void showbalance(double balance);
@@ -183,3 +182,99 @@ double withdraw(double balance){
         return amount;
     }
 }
+
+// Rock Paper Scissors game
+char userChoice();
+char computerChoice();
+void showChoice(char choice);
+void winner(char player, char computer);
+int main(){
+    char player;
+    char computer;
+
+    std::cout << "****************************\n";
+    std::cout << "Rock Paper Scissors Game\n";
+    std::cout << "****************************\n";
+
+    player = userChoice();
+    std::cout << "Your choice: ";
+    showChoice(player);
+    computer = computerChoice();
+    std::cout << "Computer's choice: ";
+    showChoice(computer);
+
+    winner(player, computer);
+
+    return 0;
+}
+char userChoice(){
+    char player;
+    do{
+        std::cout << "Choose your move\n";
+        std::cout << "r for rock\n";
+        std::cout << "p for paper\n";
+        std::cout << "s for scissors\n";
+        std::cin >> player;
+        player = tolower(player);
+    }
+    while(player != 'r' && player != 'p' && player != 's');
+    return player;
+}
+char computerChoice(){
+    srand(time(NULL));
+    int num = rand() % 3 +1;
+    switch (num){
+        case 1: return 'r';
+        case 2: return 'p';
+        case 3: return 's';
+    }
+}
+void showChoice(char choice){
+    switch(choice){
+        case 'r': std::cout << "Rock\n";
+        break;
+        case 'p': std::cout << "Paper\n";
+        break;
+        case 's': std::cout << "Scissors\n";
+        break;
+    }
+    
+}
+void winner(char player, char computer){
+    switch(player){
+        case 'r': 
+            if (computer == 'r'){
+            std::cout << "Tie!\n";
+            }
+            else if (computer == 'p'){
+            std::cout << "You lose!\n";
+            }
+            else{
+            std::cout << "You win!\n";
+            }
+            break;
+        case 'p': 
+            if (computer == 'r'){
+            std::cout << "You win!\n";
+            }
+            else if (computer == 'p'){
+            std::cout << "Tie!\n";
+            }
+            else{
+            std::cout << "You lose!\n";
+            }
+            break;
+        case 's': 
+            if (computer == 'r'){
+            std::cout << "You lose!\n";
+            }
+            else if (computer == 'p'){
+            std::cout << "You win!\n";
+            }
+            else{
+            std::cout << "Tie!\n";
+            }
+            break;
+    }
+}
+*/
