@@ -130,7 +130,7 @@ int main(){
 
     return 0;
 }
-*/
+
 //Fill with user input
 int main(){
     std::string foods[5];
@@ -153,5 +153,67 @@ int main(){
         std::cout << foods[i] << '\n';
     }
 
+    return 0;
+}
+
+// 2-D arrays
+int main(){
+    std::string cars[][2] = {
+        {"Mustang", "Camaro"},
+        {"Corvette", "Challenger"},
+        {"F-150", "Silverado"}
+    };
+
+    int rows = sizeof(cars)/sizeof(cars[0]);
+    int coloums = sizeof(cars[0])/sizeof(cars[0][0]);
+
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < coloums; j++){
+            std::cout << cars[i][j] << '\t';
+        }
+    }
+
+    return 0;
+}
+*/
+
+//Quiz game
+
+int main(){
+    std::string question[] = {
+        "What is the capital of France? \n",
+        "What is the currency of Japan? \n",
+        "What is the largest continent? \n"
+    };
+    std::string options[][4] = {
+        {"A) New York", "B) Los Angeles", "C) Paris", "D) London"},
+        {"A) Yen", "B) Dollar", "C) Euro", "D) Pound"},
+        {"A) Asia", "B) Africa", "C)North America", "D) South America"}
+    };
+
+    char answers[] = {'C', 'A', 'A'};
+    
+    int size = sizeof(question)/sizeof(question[0]);
+    char guess;
+    int score = 0;
+
+    for(int i = 0; i<size; i++){
+        std::cout << question[i] << "\n";
+
+        for(int j = 0; j< sizeof(options[i])/sizeof(options[i][0]); j++){
+            std::cout << options[i][j] << "\n";
+        }
+        std::cin >> guess;
+        guess = toupper(guess);
+        if(guess == answers[i]){
+            std::cout << "Correct\n";
+            score++;
+        }
+        else{
+            std::cout <<"Wrong\n";
+            std::cout << answers[i]<<" is the correct answer\n";
+        }
+    }
+    std::cout << "You scored " << score << " out of " << size << '\n';
     return 0;
 }
